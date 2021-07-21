@@ -17,20 +17,19 @@ class SkryfallSkill(MycroftSkill):
     def initialize(self):
         self.is_reading = False
 
+    @intent_file_handler('doYouKnowAboutMagic.intent')
+    def handle_skryfall(self, message):
+        response = self.get_response('skryfall')
+
+
     @intent_file_handler('readFlavourText.intent')
-    def handle_fairytalez(self, message):
-        if message.data.get("cardName") is None:
-            response = self.get_response('skryfall', num_retries=0)
-            if response is None:
-                return
-        else:
-            response = message.data.get("cardName")
-        self.speak_dialog('let_me_think', data={"cardName": response})
+    def handle_flavorText(self, message):
+        cardName = message.data.get("cardName")
+        self.speak_dialog('let_me_think', data={"cardName": cardName})
 
-        card = scrython.cards.Named(fuzzy=response)
+        card = scrython.cards.Named(fuzzy=cardName)
 
-        self.speak_dialog('flavourtext',data={"cardName": response, "flavor_text": card.flavor_text()})
-
+        self.speak_dialog('flavourtext',data={"cardName": cardName, "flavor_text": card.flavor_text()})
 
 
 def create_skill():
