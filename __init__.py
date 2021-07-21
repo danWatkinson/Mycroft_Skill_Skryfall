@@ -10,7 +10,7 @@ import time
 
 import scrython
 
-class Skryfall(MycroftSkill):
+class SkryfallSkill(MycroftSkill):
     def __init__(self):
         MycroftSkill.__init__(self)
 
@@ -34,4 +34,4 @@ class Skryfall(MycroftSkill):
 
 
 def create_skill():
-    return Skryfall()
+    return SkryfallSkill()
