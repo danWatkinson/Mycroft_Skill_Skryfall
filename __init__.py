@@ -24,7 +24,9 @@ class SkryfallSkill(MycroftSkill):
 
     @intent_file_handler('readFlavourText.intent')
     def handle_flavorText(self, message):
-        cardName = message.data.get("cardName")
+        self.log.info("message", message)
+        self.log.info("message.data", message.data)
+        cardName = message.data.get("name")
         self.speak_dialog('let_me_think', data={"cardName": cardName})
 
         card = scrython.cards.Named(fuzzy=cardName)
