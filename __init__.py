@@ -29,7 +29,7 @@ class SkryfallSkill(MycroftSkill):
 
         card = scrython.cards.Named(fuzzy=response)
 
-        self.speak_dialog('flavourtext',data={"cardName": response, "flavor_text": card.flavor_text())
+        self.speak_dialog('flavourtext',data={"cardName": response, "flavor_text": card.flavor_text()})
 
 
 
